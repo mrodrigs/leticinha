@@ -1,0 +1,72 @@
+[
+  {
+    "id": "0",
+    "name": "Ariel",
+    "category": "Princesas",
+    "price": "55.00",
+    "image": "/assets/ariel.jpeg"
+  },
+  {
+    "id": "1",
+    "name": "Ariel",
+    "category": "Princesas",
+    "price": "55.00",
+    "image": "/assets/ariel.jpeg"
+  },
+  {
+    "id": "2",
+    "name": "Ariel",
+    "category": "Princesas",
+    "price": "55.00",
+    "image": "../../assets/ariel.jpeg"
+  },
+  {
+    "id": "3",
+    "name": "Ariel",
+    "category": "Princesas",
+    "price": "55.00",
+    "image": "../../assets/ariel.jpeg"
+  },
+  {
+    "id": "4",
+    "name": "Ariel",
+    "category": "Princesas",
+    "price": "55.00",
+    "image": "../../assets/ariel.jpeg"
+  },
+  {
+    "id": "5",
+    "name": "Ariel",
+    "category": "Princesas",
+    "price": "55.00",
+    "image": "../../assets/ariel.jpeg"
+  },
+  {
+    "id": "6",
+    "name": "Ariel",
+    "category": "Princesas",
+    "price": "55.00",
+    "image": "../../assets/ariel.jpeg"
+  },
+  {
+    "id": "7",
+    "name": "Ariel",
+    "category": "Princesas",
+    "price": "55.00",
+    "image": "../../assets/ariel.jpeg"
+  },
+  {
+    "id": "8",
+    "name": "Ariel",
+    "category": "Princesas",
+    "price": "55.00",
+    "image": "../../assets/ariel.jpeg"
+  },
+  {
+    "id": "9",
+    "name": "Ariel",
+    "category": "Princesas",
+    "price": "55.00",
+    "image": "../../assets/ariel.jpeg"
+  }
+]

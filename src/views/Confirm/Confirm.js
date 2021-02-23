@@ -1,40 +1,43 @@
-import React from 'react';
-
-import { Page, Header, Logo, Options, Container, Line, InputSearch, TextType, Card, Title, Box } from './styles';
-import logo from '../../assets/logo.png';
+import { useEffect, useState } from 'react';
+import {
+  Page,
+  Container,
+  Card,
+  Title,
+  Box,
+} from './styles';
 import { TitleItem } from '../Cart/styles';
+import Header from '../../components/Header/Header';
+import useCart from '../../hooks/useCart';
 
 function Confirm() {
+  const [total, setTotal] = useState();
+
+  const { cart, data } = useCart();
+
+  useEffect(() => {
+    if (cart.length > 0) {
+      let newTotal = 0;
+
+      cart.forEach(item => newTotal +=  parseInt(item.price));
+
+      setTotal(newTotal);
+    }
+  }, [cart]);
+
   return (
     <Page>
-     <Header>
-       <Logo src={logo}/>
-        <InputSearch placeholder="Buscar" type="text"/>
-     </Header>
-     <Options>
-        <TextType>Pronta entrega</TextType>
-        <TextType>Amigurumi</TextType>
-        <TextType>Para bebês</TextType>
-        <TextType>Tricotin</TextType>
-        <TextType>Personalizando</TextType>
-        <TextType>Sobre mim</TextType>
-      </Options>
-      <Line/>
-
-    <Container>
-      <Card>
-        <Title>Resumo da compra</Title>
-        <Box> 
-            <TitleItem>Nome do produto</TitleItem>
-            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nibh purus, euismod in egestas vel, consectetur quis ante. Pellentesque urna tellus, pulvinar ut augue sed, pharetra tristique metus. </span>
-        </Box>
-        <Box> 
-            <TitleItem>Seus dados</TitleItem>
-            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nibh purus, euismod in egestas vel, consectetur quis ante. Pellentesque urna tellus, pulvinar ut augue sed, pharetra tristique metus. </span>
-        </Box>
-        <TitleItem>Entrega prevista para 00/00/00</TitleItem>
-      </Card>
-    </Container>
+      <Header />
+      <Container>
+        <Card>
+          <Title>Resumo da compra</Title>
+          <TitleItem>Preço total:</TitleItem>
+          <span style={{ fontSize: 24 }}>R$ {total}</span>
+          <TitleItem>Local de entrega:</TitleItem>
+          <span>Rua: {data.address}, Cidade: {data.city}, Número: {data.number}, Complemento: {data.complement}, CEP: {data.cep}</span>
+          <TitleItem>Seu pedido chegará em até {Math.floor((Math.random() * 10)) + 1} dias!</TitleItem>
+        </Card>
+      </Container>
     </Page>
   );
 }

@@ -1,10 +1,10 @@
-  
+
 import styled from 'styled-components';
 
 export const Page = styled.div`
   width: 100%;
-  height: 100vh;
   background: #FFFEEB;
+  min-height: 100vh;
 `;
 
 export const Header = styled.div`
@@ -13,7 +13,6 @@ export const Header = styled.div`
   background-color: #FFFEEB;
   display: flex;
   align-items: center;
-  
 `;
 
 export const Logo = styled.img`
@@ -37,29 +36,13 @@ export const TextType = styled.span`
 
 export const Text = styled.span`
   font-size: 15px;
-  margin-top: 10px;
-  margin-left: 10px;
 `;
 
 export const Container = styled.div`
   width: 100%;
-  height: 913px;
+  height: 100%;
   background-color: #FFFEEB;
-`;
-
-export const Line = styled.div`
-  width: 100%;
-  height: 2px;
-  background-color: #F8B3C5;
-`;
-
-export const InputSearch = styled.input`
-  border: 1px solid #000;
-  height: 40px;
-  margin-left: 10px;
-  width: 1000px;
-  border-radius: 50px;
-  background-color: #ffffff;
+  padding: 20px;
 `;
 
 export const Title = styled.span`
@@ -69,7 +52,6 @@ export const Title = styled.span`
 
 export const ItemBox = styled.div`
   width: 100%;
-  height: 913px;
   background-color: #FFFEEB;
   display: flex;
   justify-content: space-around;
@@ -77,19 +59,19 @@ export const ItemBox = styled.div`
 
 export const Item = styled.div`
   display: flex;
-  width: 800px;
-  height: 170px;
+  width: 100%;
   background-color: #FFFEEB;
   margin-top: 20px;
   border-color: black;
-  border-radius: 10px;
-  border: 1px solid #000;
+  border-radius: 4px;
+  margin-right: 20px;
+  flex-wrap: wrap;
 `;
 
 export const TitleItem = styled.span`
   font-size: 15px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-top: 10px;
 `;
 
 export const Photo = styled.img`
@@ -99,23 +81,25 @@ export const Photo = styled.img`
 
 export const InfoBox = styled.div`
   background: #fff;
-  border-radius: 10px;
+  border-radius: 4px;
   box-shadow: 0 12.5px 10px rgba(0, 0, 0, 0.035),
     0 100px 80px rgba(0, 0, 0, 0.07);
   font-size: 16px;
-  margin-top: 48px;
-  width: 460px;
-  height: 350px;
+  width: 700px;
   display: flex;
+  height: 250px;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  padding: 20px;
 `;
 
 export const InfoItem = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
+  border: 1px solid #cecece;
+  padding: 10px;
+  margin-bottom: 10px;
 `;
 
 export const Button = styled.button`
@@ -124,16 +108,31 @@ export const Button = styled.button`
 `;
 
 export const Input = styled.input`
-  border: 1px solid #000;
+  border: 1px solid #cecece;
   height: 30px;
   margin-left: 10px;
   width: 100%;
-  border-radius: 50px;
+  border-radius: 4px;
   background-color: #ffffff;
+  padding-left: 10px;
 `;
 
 export const DataBox = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 400px;
+  margin-bottom: 5px;
+  align-items: center;
+  width: 100%;
 `;
+
+  export const FinishButton = styled.button`
+    cursor: pointer;
+    background: transparent;
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 4px;
+    margin-top: 10px;
+    height: 40px;
+    font-weight: bold;
+    width: 200px;
+  `;

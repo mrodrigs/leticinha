@@ -1,79 +1,103 @@
-import React from 'react';
+import { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
-import { Page, Header, Logo, Options, Container, Line, InputSearch, TextType, Text, Title, Item, InfoBox, ItemBox, TitleItem,
-        Photo, InfoItem, Button, DataBox, Input } from './styles';
-import logo from '../../assets/logo.png';
-import Ariel from '../../assets/ariel.jpeg'
+import {
+  Page,
+  Container,
+  Text,
+  Title,
+  Item,
+  InfoBox,
+  ItemBox,
+  TitleItem,
+  InfoItem,
+  DataBox,
+  Input,
+  FinishButton,
+} from './styles';
+import useCart from '../../hooks/useCart';
+import Header from '../../components/Header/Header';
 
-function Cart() {
+function Cart({ history }) {
+  const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+  const [number, setNumber] = useState('');
+  const [complement, setComplement] = useState('');
+  const [city, setCity] = useState('');
+  const [cep, setCep] = useState('');
+
+  const { cart, data, setData } = useCart();
+
+  const handleSubmit = () => {
+    setData({
+      name,
+      address,
+      number,
+      complement,
+      city,
+      cep,
+    });
+
+    console.log({
+      name,
+      address,
+      number,
+      complement,
+      city,
+      cep,
+    });
+
+    history.push('/confirm')
+  }
+
   return (
     <Page>
-     <Header>
-       <Logo src={logo}/>
-        <InputSearch placeholder="Buscar" type="text"/>
-     </Header>
-     <Options>
-        <TextType>Pronta entrega</TextType>
-        <TextType>Amigurumi</TextType>
-        <TextType>Para bebês</TextType>
-        <TextType>Tricotin</TextType>
-        <TextType>Personalizando</TextType>
-        <TextType>Sobre mim</TextType>
-      </Options>
-      <Line/>
-
+      <Header />
     <Container>
       <Title>Itens no seu carrinho</Title>
-
       <ItemBox>
         <Item>
-          <Photo src={Ariel}/>
-          <InfoItem>
-            <TitleItem> Nome do produto </TitleItem>
-            <Text>detalhes do produto</Text>
-            <div>
-              <Button>Salvar para depois</Button>
-              <Button>Remover</Button>
-            </div>
-          </InfoItem>
-          <div className="d-flex justify-content-end"> Preço </div>
+          {cart && cart.map(item => (
+            <InfoItem key={item.id}>
+              <TitleItem>Nome do produto:</TitleItem>
+              <Text>{item.name}</Text>
+              <TitleItem>Categoria:</TitleItem>
+              <Text>{item.category}</Text>
+              <TitleItem>Preço:</TitleItem>
+              <Text>{item.price}</Text>
+            </InfoItem>
+          ))}
         </Item>
-
         <InfoBox>
           <Title>Meus dados</Title>
-          
           <DataBox>
             <Text>Nome</Text>
-            <Input placeholder="Nome" type="text"/>
+            <Input name="name" placeholder="Nome" type="text" onChange={event => setName(event.target.value)}/>
           </DataBox>
-
           <DataBox>
             <Text>Endereço</Text>
-            <Input placeholder="Endereço" type="text"/>
+            <Input placeholder="Endereço" type="text" onChange={event => setAddress(event.target.value)}/>
           </DataBox>
-
           <DataBox>
             <Text>Número</Text>
-            <Input placeholder="Nº" type="number"/>
-
-            <Text>Complemento</Text>
-            <Input placeholder="Complemento" type="text"/>
+            <Input placeholder="Nº" onChange={event => setNumber(event.target.value)} />
+            <Text style={{ marginLeft: 5 }}>Complemento</Text>
+            <Input placeholder="Complemento" type="text" onChange={event => setComplement(event.target.value)}/>
           </DataBox>
-
           <DataBox>
             <Text>Cidade</Text>
-            <Input placeholder="Cidade" type="text"/>
-
-            <Text>CEP</Text>
-            <Input placeholder="CEP" type="number"/>
+            <Input placeholder="Cidade" type="text" onChange={event => setCity(event.target.value)}/>
+            <Text style={{ marginLeft: 5 }}>CEP</Text>
+            <Input placeholder="CEP" onChange={event => setCep(event.target.value)} />
           </DataBox>
-          
+          <FinishButton onClick={handleSubmit}>
+            Finalizar
+          </FinishButton>
         </InfoBox>
       </ItemBox>
-        
     </Container>
     </Page>
   );
 }
 
-export default Cart;
+export default withRouter(Cart);
